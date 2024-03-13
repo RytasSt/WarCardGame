@@ -1,11 +1,13 @@
 # WarCardGame
 ## Functionality
 ### Game Setup
-- The game automatically matches the player against an AI opponent upon starting.
+- You play against an AI opponent upon starting.
 
 ### Gameplay
-- Players take turns revealing the top card from their deck.
+- At the start standard deck of cards is shuffled and split evenly between both players
+- Every round players reveal the top card from their deck.
 - The player with the higher card wins and collects both cards.
+- When a player wins a round and collects cards, those cards should be added to the player's deck. Subsequently, the player's deck should be shuffled to ensure randomness in card distribution for future rounds.
 - In case of a tie, a "war" occurs:
   - Each player reveals three additional cards face-down and then one card face-up.
   - The player with the higher face-up card wins the war and collects all cards in play.
