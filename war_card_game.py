@@ -23,7 +23,6 @@ class Cards:
 
 
 
-
 def main():
     cards = Cards()
     cards.create_deck()
@@ -31,12 +30,6 @@ def main():
     cards.shuffle_cards()
 
     print(cards.get_deck())
-
-    
-    
-
-        
-
 
 
 if __name__ == "__main__":
