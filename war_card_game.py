@@ -1,7 +1,7 @@
 from typing import List
 import random
 
-class Cards:
+class Deck:
     def __init__(self):
         self.deck = []
 
@@ -15,7 +15,7 @@ class Cards:
     def remove_card(self) -> List[str]:
         self.deck.pop(0)
 
-    def shuffle_cards(self) -> List[str]:
+    def shuffle_deck(self) -> List[str]:
         random.shuffle(self.deck)
     
     def get_deck(self) -> List[str]:
@@ -24,12 +24,12 @@ class Cards:
 
 
 def main():
-    cards = Cards()
-    cards.create_deck()
-    cards.remove_card()
-    cards.shuffle_cards()
+    deck = Deck()
+    deck.create_deck()
+    deck.remove_card()
+    deck.shuffle_deck()
 
-    print(cards.get_deck())
+    print(deck.get_deck())
 
 
 if __name__ == "__main__":
