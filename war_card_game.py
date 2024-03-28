@@ -98,15 +98,15 @@ class Game:
             table_ui.print_round(round_outcome)
             self.play_war_round()
 
-        # if round_outcome in ["win", "lose"]:
-        # table_ui.print_round()
-
-        print(self.human.hand)
-        print(":")
-        print(self.bot.hand)
+        print(f"Player's cards: {len(self.human.hand)}")
+        print("vs")
+        print(f"Bot's cards: {len(self.bot.hand)}")
 
     def play_war_round(self):
         print("War!")
+        if not self.check_cards_for_war():
+            return 
+
         war_cards = []
         for _ in range(3):
             h_war_dealt_card = self.human.deal_card()
@@ -127,7 +127,7 @@ class Game:
         b_war_card = Card(b_war_dealt_card)
 
         table_ui = Table_UI(h_war_dealt_card, b_war_dealt_card, self.round_count)
-        print(f"WAR CARDS: {war_cards}")
+        # print(f"WAR CARDS: {war_cards}")
         if h_war_card > b_war_card:
             round_outcome = "War win"
             self.human.add_cards(war_cards)
@@ -141,10 +141,24 @@ class Game:
             table_ui.print_war_round(round_outcome)
             self.play_war_round()
 
+    def check_cards_for_war(self):
+        if len(self.human.hand) < 4:
+            print("Bot wins! Player does not have enough cards to continue the war.")
+            return False 
+        elif len(self.bot.hand) < 4:
+            print("Player wins! Bot does not have enough cards to continue the war.")
+            return False
+        return True
 
     def start_game(self):
         while True:
             self.play_round()
+            if len(self.human.hand) == 0:
+                print("Bot wins! Player has run out of cards.")
+                return
+            elif len(self.bot.hand) == 0:
+                print("Player wins! Bot has run out of cards.")
+                return
 
 class Table_UI:
     def __init__(self, bot_card, human_card, round_count):
