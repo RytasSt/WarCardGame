@@ -8,7 +8,6 @@ class Deck:
         self.bot_deck = []
 
         values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
-        # values = ["2", "3", "4", "5", "6"]
         symbols = ["♣", "♠", "♦", "♥"]
         for value in values:
             for symbol in symbols:
@@ -127,7 +126,7 @@ class Game:
         b_war_card = Card(b_war_dealt_card)
 
         table_ui = Table_UI(h_war_dealt_card, b_war_dealt_card, self.round_count)
-        # print(f"WAR CARDS: {war_cards}")
+
         if h_war_card > b_war_card:
             round_outcome = "War win"
             self.human.add_cards(war_cards)
